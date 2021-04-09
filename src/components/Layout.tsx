@@ -1,6 +1,6 @@
-import Nav from './Nav';
-import React from 'react';
-import styled from 'styled-components';
+import Nav from "./Nav";
+import React from "react";
+import styled from "styled-components";
 
 const Wrapper = styled.div`
   min-height: 100vh;
@@ -14,7 +14,7 @@ const Main = styled.div`
 const Layout = (props: any) => {
     return (
         <Wrapper>
-            <Main>
+            <Main className={props.className}>
                 {props.children}
             </Main>
             <Nav/>
