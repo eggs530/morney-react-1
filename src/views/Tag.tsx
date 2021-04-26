@@ -21,14 +21,14 @@ const Topbar = styled.header`
   background: white;
 `;
 const InputWrapper = styled.div`
-    background: white;
-  padding:14px 16px;
+  background: white;
+  padding: 14px 16px;
   font-size: 14px;
-`
+`;
 const Tag: React.FC = () => {
-    const {findTag} = useTags();
-    let {id} = useParams<Params>();
-    const tag = findTag(parseInt(id));
+    const {findTag, updateTag} = useTags();
+    let {id: idString} = useParams<Params>();//把id重命名为idString
+    const tag = findTag(parseInt(idString));
     return (
         <Layout>
             <Topbar>
@@ -37,7 +37,12 @@ const Tag: React.FC = () => {
                 <Icon/>
             </Topbar>
             <InputWrapper>
-                <Input label="标签名" type="text" placeholder="请填写备注" value="tag.name"/>
+                <Input label="标签名" type="text" placeholder="请填写备注"
+                       value={tag.name}
+                       onChange={(e) => {
+                           updateTag(tag.id, {name: e.target.value});
+                       }}
+                />
             </InputWrapper>
             <Space/>
             <Space/>
