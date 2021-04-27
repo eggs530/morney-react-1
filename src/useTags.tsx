@@ -3,16 +3,19 @@ import createId from './lb/createId';
 import useUpdate from './hooks/useUpdate';
 
 
-const defaultTags = [
-    {id: createId(), name: '衣'},
-    {id: createId(), name: '食'},
-    {id: createId(), name: '住'},
-    {id: createId(), name: '行'}
-];
 const useTags = () => {
     const [tags, setTags] = useState<{ id: number; name: string }[]>([]);
     useEffect(() => {
-        setTags(JSON.parse(window.localStorage.getItem('tags') || '[]'));
+        let localTags = JSON.parse(window.localStorage.getItem('tags') || '[]');
+        if(localTags.length === 0){
+            localTags = [
+                {id: createId(), name: '衣'},
+                {id: createId(), name: '食'},
+                {id: createId(), name: '住'},
+                {id: createId(), name: '行'}
+            ];
+        }
+        setTags(localTags)
     }, []);//要排除从undefined变成初始值的那一次更新
     useUpdate(() => {
         window.localStorage.setItem('tags', JSON.stringify(tags));
@@ -36,7 +39,7 @@ const useTags = () => {
     };
     const addTag = () => {
         const tagName = window.prompt('新增的标签名为');
-        if (tagName !== null) {
+        if (tagName !== null && tagName !== '') {
             setTags([...tags, {id: createId(), name: tagName}]);
         }
     };
