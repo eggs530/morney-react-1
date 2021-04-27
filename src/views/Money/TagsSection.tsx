@@ -43,14 +43,8 @@ type Props = {
     onChange: (selected: number[]) => void//参数为空返回值为空方便声明类型
 }
 const TagSection: React.FunctionComponent<Props> = (props) => {
-    const {tags,setTags}=useTags()
+    const {tags,addTag}=useTags()
     const selectedIds = props.value;
-    const onAddTag = () => {
-        const tagName = window.prompt("新增的标签名为");
-        if (tagName !== null) {
-            setTags([...tags, {id:createId(),name:tagName}]);
-        }
-    };
     const onToggleTag = (tagId: number) => {
         const index = selectedIds.indexOf(tagId);
         if (index >= 0) {
@@ -73,7 +67,7 @@ const TagSection: React.FunctionComponent<Props> = (props) => {
                     >{tag.name}</li>
                 )}
             </ol>
-            <button onClick={onAddTag}>新增标签</button>
+            <button onClick={addTag}>新增标签</button>
         </Wrapper>
     );
 };
