@@ -1,6 +1,6 @@
 import Layout from '../components/Layout';
 import React from 'react';
-import useTags from 'useTags';
+import useTags from 'hooks/useTags';
 import styled from 'styled-components';
 import Icon from '../components/Icons';
 import {Link} from 'react-router-dom';
@@ -34,7 +34,7 @@ function Tags() {
                 {tags.map(tag =>
                     <li key={tag.id}>
                         <Link to={'/tags/' + tag.id}>
-                            <span className="oneLine">{tag.name}</span>
+                            <span className="oneLine">{tag.id}{tag.name}</span>
                             <Icon name="right"/>
                         </Link>
                     </li>

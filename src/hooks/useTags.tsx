@@ -1,6 +1,6 @@
-import {useEffect, useRef, useState} from 'react';
-import createId from './lb/createId';
-import useUpdate from './hooks/useUpdate';
+import {useEffect,  useState} from 'react';
+import createId from '../lb/createId';
+import useUpdate from './useUpdate';
 
 
 const useTags = () => {
