@@ -35,7 +35,7 @@ function Statistics() {
     const {records} = useRecords();
     const {getName} = useTags();
     const selectedRecords = records.filter(r => r.category === category);
-    const hash: { [k: string]: RecordItem[] } = {};
+    const hash: { [K: string]: RecordItem[] } = {};
     selectedRecords.map(r => {
         const key = day(r.createdAt).format('YYYY年MM月DD日');
         if (!(key in hash)) {
@@ -65,10 +65,10 @@ function Statistics() {
                     </Header>
                     <div>
                         {records.map(r => {
-                            return <Item>
+                            return <Item key={r.createdAt}>
                                 <div className="tags oneLine">
                                     {r.tagIds
-                                        .map(tagId => <span key="tagId">{getName(tagId)}</span>)
+                                        .map(tagId => <span key={tagId}>{getName(tagId)}</span>)
                                         .reduce((result, span, index, array) =>
                                                 result.concat(index < array.length - 1 ? [span, '，'] : [span])
                                             , [] as ReactNode[])

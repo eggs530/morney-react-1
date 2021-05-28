@@ -19,7 +19,7 @@ const useTags = () => {
     }, []);//要排除从undefined变成初始值的那一次更新
     useUpdate(() => {
         window.localStorage.setItem('tags', JSON.stringify(tags));
-    }, [tags]);
+    }, tags);
     const findTag = (id: number) => tags.filter(tag => tag.id === id)[0];
     const findTagIndex = (id: number) => {
         let result = -1;//避免id不存在于这个数组而返回i
