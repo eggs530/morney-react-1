@@ -21,8 +21,9 @@ const defaultFormData = {
 };
 
 const CategoryWrapper = styled.div`
-    background: #c4c4c4;
-`
+  background: #c4c4c4;
+`;
+
 function Money() {
     const [selected, setSelected] = useState(defaultFormData);
     const {addRecord} = useRecords();
@@ -39,14 +40,14 @@ function Money() {
         }
     };
     return (
-        <MyLayout>
+        <MyLayout scrollTop={9999}>
             <TagsSection value={selected.tagIds}
                          onChange={tagIds => onChange({tagIds})}/>
             <NoteSection value={selected.note}
                          onChange={note => onChange({note})}/>
             <CategoryWrapper>
-            <CategorySection value={selected.category}
-                             onChange={category => onChange({category})}/>
+                <CategorySection value={selected.category}
+                                 onChange={category => onChange({category})}/>
             </CategoryWrapper>
             <NumberPadSection value={selected.amount}
                               onChange={amount => onChange({amount})}
