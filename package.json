@@ -1,6 +1,7 @@
 {
   "name": "morney-1",
   "version": "0.1.0",
+  "homepage": "https://eggs530.github.io/morney-react--website/",
   "private": true,
   "dependencies": {
     "@babel/core": "7.12.3",
